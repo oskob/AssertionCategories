@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Danny Ricciotti. All rights reserved.
 //
 
-#import "AssertionCategories.h"
+#import "CollectionExtensions.h"
 
-@implementation NSObject (AssertionCategories)
+@implementation NSDictionary (NSDictionaryExtensions)
 
 - (id)objectForKey:(id)aKey ofClass:(NSString *)aClassName;
 {
@@ -46,7 +46,20 @@
 
 @end
 
-@implementation NSArray (AssertionCategories)
+@implementation NSMutableDictionary (NSMutableDictionaryExtensions)
+
+- (void)setObject:(id)object forKey:(id<NSCopying>)aKey ignoreNil:(BOOL)ignoreNil;
+{
+	if(object || !ignoreNil)
+	{
+		[self setObject:object forKey:aKey];
+	}
+}
+
+
+@end
+
+@implementation NSArray (NSArrayExctensions)
 
 - (id)objectAtIndex:(NSUInteger)index ofClass:(NSString *)aClassName;
 {
@@ -57,6 +70,19 @@
 #endif
     
     return object;
+}
+
+@end
+
+
+@implementation NSMutableArray (NSMutableArrayExtensions)
+
+- (void)addObject:(id)object ignoreNil:(BOOL)ignoreNil;
+{
+	if(object || !ignoreNil)
+	{
+		[self addObject:object];
+	}
 }
 
 @end
