@@ -8,8 +8,7 @@
 
 @interface NSDictionary (NSDictionaryExtensions)
 
-- (id)objectForKey:(id)aKey ofClass:(NSString *)aClassName;
-- (id)objectForKey:(id)aKey ofClass:(NSString *)aClassName mustExist:(BOOL)mustExist;
+- (id)objectForKey:(id)aKey ofClass:(Class)class;
 
 @end
 
